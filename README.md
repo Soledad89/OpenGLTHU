@@ -1,6 +1,6 @@
 # OpenGL-THU
-# By soledad89, the department of electrical engineering of  Tsinghua University.
-# wangboshine@126.com
+soledad89, electrical engineering department of Tsinghua University.
+wangboshine@126.com
 
 OpenGL Class in Tsinghua University for Graduates students.
 
