@@ -17,7 +17,8 @@ const int screenHeight = 480;	   // height of the screen window in pixels
 //<<<<<<<<<<<<<<<<<<<<<<<< myDisplay >>>>>>>>>>>>>>>>>
 void myDisplay(void)
 {
-	glClear(GL_COLOR_BUFFER_BIT);     // clear the screen 
+	glClear(GL_COLOR_BUFFER_BIT);     // clear the screen
+	
 	glTranslatef(350,100,0);
 	glBegin(GL_TRIANGLES);								// Drawing Using Triangles
 		glColor3f(1.0f, 1.0f, 0.0f);         // the drawing color
@@ -25,8 +26,8 @@ void myDisplay(void)
 		glVertex3i(-100,0,0);					// Bottom Left
 		glVertex3i(100,0,0);					// Bottom Right
 	glEnd();											// Finished Drawing The Triangle
-	glTranslatef(300,0,0);					
 	
+	glTranslatef(300,0,0);					
 	glBegin(GL_QUADS);									// Draw A Quad
 		glColor3f(0.0f, 1.0f, 0.0f);         // the drawing color
 		glVertex3f(-100,0,0);					// Top Left
