@@ -7,7 +7,8 @@
 // to test if the xcode project can sync the change by vim
 // to test if the xcode exchange can be synced to the github
 // to see this can be immediatelly shown in xcode .
-//
+// to test this file can be commited by xcode.
+
 const int screenWidth = 640;	   // width of the screen window in pixels 
 const int screenHeight = 480;	   // height of the screen window in pixels
 GLfloat tri_angle = 0.0;
