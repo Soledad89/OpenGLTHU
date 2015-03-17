@@ -14,6 +14,7 @@ const int screenHeight = 480;	   // height of the screen window in pixels
 GLfloat tri_angle = 0.0;
 GLfloat squ_angle = 0.0;
 
+
 //<<<<<<<<<<<<<<<<<<<<<<< myInit >>>>>>>>>>>>>>>>>>>>
  void myInit(void)
  {
@@ -23,6 +24,8 @@ GLfloat squ_angle = 0.0;
 	glLoadIdentity();
 	gluOrtho2D(0.0f, (GLdouble)screenWidth,0.0f,(GLdouble)screenHeight);
 }
+
+
 //<<<<<<<<<<<<<<<<<<<<<<<< myDisplay >>>>>>>>>>>>>>>>>
 void myDisplay(void)
 {
@@ -67,6 +70,9 @@ void processMenuEvents(int option) {
 		case WHITE : red = 1.0; green = 1.0; blue = 1.0; break;
 	}
 */
+
+
+
 //<<<<<<<<<<<<<<<<<<<<<<<< main >>>>>>>>>>>>>>>>>>>>>>
 int main(int argc, char** argv)
 
