@@ -6,6 +6,7 @@
 // This is in the Xcode project directory.
 // to test if the xcode project can sync the change by vim
 // to test if the xcode exchange can be synced to the github
+// to see this can be immediatelly shown in xcode .
 //
 const int screenWidth = 640;	   // width of the screen window in pixels 
 const int screenHeight = 480;	   // height of the screen window in pixels
