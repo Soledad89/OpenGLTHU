@@ -45,7 +45,7 @@ void myDisplay(void)
 
 	glBegin(GL_QUADS);									// Draw A Quad
 		glColor3f(0.0f, 1.0f, 0.0f);         // the drawing color
-		glVertex3f(-0.5,-0.5,0);					// Top Leftgit 
+		glVertex3f(-0.5,-0.5,0);					// Top Leftgit
 		glVertex3f(0.5,-0.5,0);					// Top Right
 		glVertex3f(0.5,0.5,0);					// Bottom Right
 		glVertex3f(-0.5,0.5,0);					// Bottom Left
