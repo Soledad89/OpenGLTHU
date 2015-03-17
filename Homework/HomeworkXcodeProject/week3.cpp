@@ -3,7 +3,10 @@
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <GLUT/Glut.h>
-
+// This is in the Xcode project directory.
+// to test if the xcode project can sync the change by vim
+// to test if the xcode exchange can be synced to the github
+//
 const int screenWidth = 640;	   // width of the screen window in pixels 
 const int screenHeight = 480;	   // height of the screen window in pixels
 GLfloat tri_angle = 0.0;
@@ -46,7 +49,7 @@ void myDisplay(void)
 		glVertex3f(-0.5,0.5,0);					// Bottom Left
 	glEnd();	
 	
-	//glFlush();		   // send all output to display
+	glFlush();		   // send all output to display
 
 	glutSwapBuffers();
 
