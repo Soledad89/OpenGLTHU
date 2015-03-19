@@ -201,6 +201,12 @@ OPENGL_gl_LIBRARY:FILEPATH=/System/Library/Frameworks/OpenGL.framework
 OPENGL_glu_LIBRARY:FILEPATH=/System/Library/Frameworks/AGL.framework
 
 //Value Computed by CMake
+mouse_BINARY_DIR:STATIC=/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build
+
+//Value Computed by CMake
+mouse_SOURCE_DIR:STATIC=/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework
+
+//Value Computed by CMake
 week2_BINARY_DIR:STATIC=/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build
 
 //Value Computed by CMake

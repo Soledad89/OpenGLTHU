@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/week3.dir/week3.cpp.o  -o week3  -framework AGL -framework OpenGL -framework GLUT -framework Cocoa 

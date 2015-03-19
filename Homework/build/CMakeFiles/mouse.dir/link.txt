@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/mouse.dir/mouse.cpp.o  -o mouse  -framework AGL -framework OpenGL -framework GLUT -framework Cocoa 

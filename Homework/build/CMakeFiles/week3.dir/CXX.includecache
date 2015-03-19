@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/week3.cpp
+OpenGL/gl.h
+-
+OpenGL/glu.h
+-
+GLUT/Glut.h
+-
+math.h
+-
+iostream
+-
+string
+-
+
