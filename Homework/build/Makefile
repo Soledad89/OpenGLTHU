@@ -103,41 +103,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named week3
+# Target rules for targets named rubberrect
 
 # Build rule for target.
-week3: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 week3
-.PHONY : week3
+rubberrect: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rubberrect
+.PHONY : rubberrect
 
 # fast build rule for target.
-week3/fast:
-	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/build
-.PHONY : week3/fast
+rubberrect/fast:
+	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/build
+.PHONY : rubberrect/fast
 
-week3.o: week3.cpp.o
-.PHONY : week3.o
+rubberrect.o: rubberrect.cpp.o
+.PHONY : rubberrect.o
 
 # target to build an object file
-week3.cpp.o:
-	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/week3.cpp.o
-.PHONY : week3.cpp.o
+rubberrect.cpp.o:
+	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/rubberrect.cpp.o
+.PHONY : rubberrect.cpp.o
 
-week3.i: week3.cpp.i
-.PHONY : week3.i
+rubberrect.i: rubberrect.cpp.i
+.PHONY : rubberrect.i
 
 # target to preprocess a source file
-week3.cpp.i:
-	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/week3.cpp.i
-.PHONY : week3.cpp.i
+rubberrect.cpp.i:
+	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/rubberrect.cpp.i
+.PHONY : rubberrect.cpp.i
 
-week3.s: week3.cpp.s
-.PHONY : week3.s
+rubberrect.s: rubberrect.cpp.s
+.PHONY : rubberrect.s
 
 # target to generate assembly for a file
-week3.cpp.s:
-	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/week3.cpp.s
-.PHONY : week3.cpp.s
+rubberrect.cpp.s:
+	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/rubberrect.cpp.s
+.PHONY : rubberrect.cpp.s
 
 # Help Target
 help:
@@ -147,10 +147,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... week3"
-	@echo "... week3.o"
-	@echo "... week3.i"
-	@echo "... week3.s"
+	@echo "... rubberrect"
+	@echo "... rubberrect.o"
+	@echo "... rubberrect.i"
+	@echo "... rubberrect.s"
 .PHONY : help
 
 

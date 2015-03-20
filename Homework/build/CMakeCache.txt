@@ -128,7 +128,7 @@ CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
 CMAKE_OSX_SYSROOT:STRING=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=week3
+CMAKE_PROJECT_NAME:STATIC=rubberrect
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -205,6 +205,12 @@ mouse_BINARY_DIR:STATIC=/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homewo
 
 //Value Computed by CMake
 mouse_SOURCE_DIR:STATIC=/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework
+
+//Value Computed by CMake
+rubberrect_BINARY_DIR:STATIC=/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build
+
+//Value Computed by CMake
+rubberrect_SOURCE_DIR:STATIC=/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework
 
 //Value Computed by CMake
 week2_BINARY_DIR:STATIC=/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build

@@ -53,38 +53,38 @@ CMAKE_SOURCE_DIR = /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework
 CMAKE_BINARY_DIR = /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/week3.dir
+# Target rules for target CMakeFiles/rubberrect.dir
 
 # All Build rule for target.
-CMakeFiles/week3.dir/all:
-	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/depend
-	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/build
+CMakeFiles/rubberrect.dir/all:
+	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/depend
+	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build/CMakeFiles  1
-	@echo "Built target week3"
-.PHONY : CMakeFiles/week3.dir/all
+	@echo "Built target rubberrect"
+.PHONY : CMakeFiles/rubberrect.dir/all
 
 # Include target in all.
-all: CMakeFiles/week3.dir/all
+all: CMakeFiles/rubberrect.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/week3.dir/rule: cmake_check_build_system
+CMakeFiles/rubberrect.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/week3.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rubberrect.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build/CMakeFiles 0
-.PHONY : CMakeFiles/week3.dir/rule
+.PHONY : CMakeFiles/rubberrect.dir/rule
 
 # Convenience name for target.
-week3: CMakeFiles/week3.dir/rule
-.PHONY : week3
+rubberrect: CMakeFiles/rubberrect.dir/rule
+.PHONY : rubberrect
 
 # clean rule for target.
-CMakeFiles/week3.dir/clean:
-	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/clean
-.PHONY : CMakeFiles/week3.dir/clean
+CMakeFiles/rubberrect.dir/clean:
+	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/clean
+.PHONY : CMakeFiles/rubberrect.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/week3.dir/clean
+clean: CMakeFiles/rubberrect.dir/clean
 .PHONY : clean
 
 #=============================================================================
