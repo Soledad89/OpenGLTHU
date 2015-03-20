@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/rubberrect.cpp
+OpenGL/Gl.h
+-
+GLUT/glut.h
+-
+

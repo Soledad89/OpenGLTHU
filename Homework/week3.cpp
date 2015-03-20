@@ -33,16 +33,16 @@ struct GLintPoint
     GLint x, y;
 };
 
-GLintPoint corner[2];
+static GLintPoint corner[2];
 bool mouseleftdown  = false;
 int pa = 0;
 int px = 0;
 int py = 0;
 
-float direction = 0.0;
+float d = 0.0;
 float len = 0.0;
 float angle = 0.0;
-float red = 1.0, blue = 1.0, green = 1.0;
+float red = 0.0, blue = 1.0, green = 1.0;
 
 //<<<<<<<<<<<<<<<<<<<<<<<< myDisplay >>>>>>>>>>>>>>>>>
 // printbitmap
@@ -67,25 +67,45 @@ void myDisplay(void)
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    glLoadIdentity();
     if (mouseleftdown)
     {
-        if ( corner[0].x >= 0 && corner[0].y >= 0)
+        
+        if ( corner[0].x >= winw/2 && corner[0].y >= winh/2)
             pa = 1, px = 1, py = 1;
-        else if (corner[0].x <= 0 && corner[0].y >= 0)
+        else if (corner[0].x <= winw/2 && corner[0].y >= winh/2)
             pa = 2, px = -1, py = 1;
-        else if (corner[0].x <= 0 && corner[0].y <= 0)
+        else if (corner[0].x <= winw/2 && corner[0].y <= winh/2)
             pa = 3, px = -1, py = -1;
         else
             pa = 4, px = 1, py = -1;
-        direction = atan((corner[1].y - corner[0].y)/(corner[1].x - corner[0].x));
-        len = (corner[1].y - corner[0].y)^2 + (corner[1].x - corner[0].x)^2;
-        angle = len/winw * 2 * 180;
+        
+        if (corner[1].x == corner[0].x)
+        {
+            if (corner[1].y >= corner[0].y)
+                d = PI/2;
+            else
+                d = -PI/2;
+        }
+        if (corner[1].y == corner[0].y)
+        {
+            if (corner[1].x >= corner[1].x)
+                d = 0;
+            else
+                d = PI;
+        }
+        if (corner[1].y != corner[0].y && corner[1].x != corner[0].x)
+            d = atan((double)(corner[1].y - corner[0].y)/(double)(corner[1].x - corner[0].x));
+        
+        len = pow((corner[1].y - corner[0].y),2) + pow((corner[1].x - corner[0].x),2);
+        angle = sqrt(len)/winw * 360;
+        
     }
     
 	glLoadIdentity();
     glTranslatef(-0.5, 0.5, 0.0);
-    if ( pa == 1)
-		glRotatef(angle,px,direction,0.0);
+    if ( pa == 2)
+		glRotatef(angle,px,d,0.0);
 
 	glBegin(GL_TRIANGLES);
         glColor3f(0.0f, 1.0f, 0.0f);
@@ -97,17 +117,24 @@ void myDisplay(void)
 	glEnd();
 		
     
+    
     glLoadIdentity();
     glColor3f(red, green, blue);
     glTranslatef(0.5, 0.5, 0.0);
-    glRotatef(quads_angle,1.0,0.0,0.0);
+    if ( pa == 1)
+        glRotatef(angle,d,px,0.0);
+    
     glBegin(GL_QUADS);
+        glColor3f(0.5, 0.5, 1);
         glVertex3f(-0.4,-0.4,0.0);
+        glColor3f(1, 1, 0.5);
         glVertex3f(0.4,-0.4,0.0);
+        glColor3f(1, 0.5, 0.5);
         glVertex3f(0.4,0.4,0.0);
+        glColor3f(0.5, 0.5, 0.5);
         glVertex3f(-0.4, 0.4, 0);
     glEnd();
-    quads_angle++;
+    //quads_angle++;
     
     glFlush();
     glutSwapBuffers();
@@ -126,12 +153,21 @@ void processMenuEvents(int option) {
 
 void myMouse(int button, int state, GLint x, GLint y)
 {
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+    //static GLintPoint corner[2];
+    //static int numCorners = 0;
+    if (button == GLUT_LEFT_BUTTON)
     {
-        corner[0].x = x;
-        corner[0].y = winw - y;
-        mouseleftdown = true;
-        
+        if (state == GLUT_DOWN)
+        {
+            corner[0].x = x;
+            corner[0].y = winw - y;
+            mouseleftdown = true;
+        }else if (state == GLUT_UP)
+        {
+            glClear(GL_COLOR_BUFFER_BIT);
+            mouseleftdown = false;
+            glFlush();
+        }
     }
     
     glutPostRedisplay();
@@ -171,8 +207,8 @@ void reshape(int w, int h)
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
    gluOrtho2D(-1.0, 1.0, -1.0, 1.0);//默认就是这样的
-
-   glMatrixMode(GL_MODELVIEW);  // Always go back to model/view mode
+    
+    glMatrixMode(GL_MODELVIEW);  // Always go back to model/view mode
 }
 
 
@@ -186,7 +222,7 @@ int main(int argc, char** argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGB);
     glutInitWindowSize(startwinsize, startwinsize); // set the window size
     glutInitWindowPosition(200, 150); // set the window position on screen
-    glutCreateWindow("OpenGL Learn Platform"); // open the screen window
+    glutCreateWindow("OpenGL Learning Platform"); // open the screen window
 
 	
     //设置渲染
