@@ -128,7 +128,7 @@ CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
 CMAKE_OSX_SYSROOT:STRING=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=rubberrect
+CMAKE_PROJECT_NAME:STATIC=cube
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -199,6 +199,12 @@ OPENGL_gl_LIBRARY:FILEPATH=/System/Library/Frameworks/OpenGL.framework
 
 //AGL lib for OSX
 OPENGL_glu_LIBRARY:FILEPATH=/System/Library/Frameworks/AGL.framework
+
+//Value Computed by CMake
+cube_BINARY_DIR:STATIC=/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build
+
+//Value Computed by CMake
+cube_SOURCE_DIR:STATIC=/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework
 
 //Value Computed by CMake
 mouse_BINARY_DIR:STATIC=/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build

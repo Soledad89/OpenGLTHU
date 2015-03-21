@@ -53,38 +53,38 @@ CMAKE_SOURCE_DIR = /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework
 CMAKE_BINARY_DIR = /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/rubberrect.dir
+# Target rules for target CMakeFiles/cube.dir
 
 # All Build rule for target.
-CMakeFiles/rubberrect.dir/all:
-	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/depend
-	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/build
+CMakeFiles/cube.dir/all:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/depend
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build/CMakeFiles  1
-	@echo "Built target rubberrect"
-.PHONY : CMakeFiles/rubberrect.dir/all
+	@echo "Built target cube"
+.PHONY : CMakeFiles/cube.dir/all
 
 # Include target in all.
-all: CMakeFiles/rubberrect.dir/all
+all: CMakeFiles/cube.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/rubberrect.dir/rule: cmake_check_build_system
+CMakeFiles/cube.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rubberrect.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cube.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build/CMakeFiles 0
-.PHONY : CMakeFiles/rubberrect.dir/rule
+.PHONY : CMakeFiles/cube.dir/rule
 
 # Convenience name for target.
-rubberrect: CMakeFiles/rubberrect.dir/rule
-.PHONY : rubberrect
+cube: CMakeFiles/cube.dir/rule
+.PHONY : cube
 
 # clean rule for target.
-CMakeFiles/rubberrect.dir/clean:
-	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/clean
-.PHONY : CMakeFiles/rubberrect.dir/clean
+CMakeFiles/cube.dir/clean:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/clean
+.PHONY : CMakeFiles/cube.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/rubberrect.dir/clean
+clean: CMakeFiles/cube.dir/clean
 .PHONY : clean
 
 #=============================================================================

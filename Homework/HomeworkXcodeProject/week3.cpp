@@ -44,6 +44,7 @@ float d = 0.0;
 float len = 0.0;
 //float angle = 0.0;
 float red = 0.0, blue = 1.0, green = 1.0;
+float deg_pyr = 0.0;
 
 //<<<<<<<<<<<<<<<<<<<<<<<< myDisplay >>>>>>>>>>>>>>>>>
 // printbitmap
@@ -67,12 +68,13 @@ void myDisplay(void)
 {
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    float angle;
+    
+    float angle = 0.0;
     glLoadIdentity();
     if (mouseleftdown)
     {
         len = pow((corner[1].y - corner[0].y),2) + pow((corner[1].x - corner[0].x),2);
-        angle = sqrt(len)/winw * 360;
+        angle = sqrt(len)/winw * 540;
         
         if ( corner[0].x >= winw/2 && corner[0].y >= winh/2)
         {
@@ -124,6 +126,7 @@ void myDisplay(void)
         }
     }
     
+
     glLoadIdentity();
     glTranslatef(-0.5, 0.5, 0.0);
     if (pa == 2)
@@ -154,7 +157,90 @@ void myDisplay(void)
         glVertex3f(-0.4, 0.4, 0);
     glEnd();
     //quads_angle++;
+   
+	// Pyr
     
+    glLoadIdentity();									
+	glTranslatef(-0.5f,-0.5f,0.0f);					
+    if (pa == 3)
+        glRotatef(angle,a,b,0.0);
+    //glRotatef(deg_pyr,1.0f,0.0f,0.0f);
+	glBegin(GL_TRIANGLES);					
+		glColor3f(1.0f,0.0f,0.0f);		
+		glVertex3f( 0.0f, 0.25f, 0.0f);
+        glVertex3f(-0.25f,-0.25f, 0.25f);
+		glVertex3f( 0.25f,-0.25f, 0.25f);			
+		
+        glColor3f(0.0f,1.0f,0.0f);					
+		glVertex3f( 0.0f, 0.25f, 0.0f);			
+		glVertex3f( 0.25f,-0.25f, 0.25f);	
+		glVertex3f( 0.25f,-0.25f, -0.25f);
+	
+        glColor3f(0.0f,0.0f,0.5f);
+		glVertex3f( 0.0f, 0.25f, 0.0f);	
+		glVertex3f( 0.25f,-0.25f, -0.25f);				
+		glVertex3f(-0.25f,-0.25f, -0.25f);			
+
+        glColor3f(0.5f,0.5f,0.0f);
+		glVertex3f( 0.0f, 0.25f, 0.0f);		
+		glVertex3f(-0.25f,-0.25f,-0.25f);
+		glVertex3f(-0.25f,-0.25f, 0.25f);
+
+		glColor3f(0.0f,0.5f,0.5f);
+		glVertex3f(-0.25f,-0.25f,0.25f);
+		glVertex3f(-0.25f,-0.25f,-0.25f);
+		glVertex3f(0.25,-0.25f,-0.25f);
+
+		glColor3f(0.0f, 0.5f, 0.5f);
+		glVertex3f(0.25f,-0.25f,-0.25f);
+		glVertex3f(0.25f,-0.25f,0.25f);
+		glVertex3f(-0.25f,-0.25f,0.25f);
+	glEnd();
+    //deg_pyr ++;
+    
+    
+	glLoadIdentity();						
+	glTranslatef(0.5f,-0.5f,0.0f);
+    if ( pa == 4)
+        glRotatef(angle,a,b,0.0f);
+	glBegin(GL_QUADS);			
+		glColor3f(0.0f,1.0f,0.0f);						
+		glVertex3f( 0.25f, 0.25f,-0.25f);				
+		glVertex3f(-0.25f, 0.25f,-0.25f);			
+		glVertex3f(-0.25f, 0.25f, 0.25f);		
+		glVertex3f( 0.25f, 0.25f, 0.25f);	
+		
+        glColor3f(1.0f,0.5f,0.0f);
+		glVertex3f( 0.25f,-0.25f, 0.25f);				
+		glVertex3f(-0.25f,-0.25f, 0.25f);			
+		glVertex3f(-0.25f,-0.25f,-0.25f);					
+		glVertex3f( 0.25f,-0.25f,-0.25f);				
+    
+        glColor3f(1.0f,0.0f,0.0f);
+        glVertex3f( 0.25f, 0.25f, 0.25f);
+		glVertex3f(-0.25f, 0.25f, 0.25f);	
+		glVertex3f(-0.25f,-0.25f, 0.25f);
+		glVertex3f( 0.25f,-0.25f, 0.25f);				
+
+        glColor3f(1.0f,1.0f,0.0f);
+		glVertex3f( 0.25f,-0.25f,-0.25f);		
+		glVertex3f(-0.25f,-0.25f,-0.25f);			
+		glVertex3f(-0.25f, 0.25f,-0.25f);				
+		glVertex3f( 0.25f, 0.25f,-0.25f);					
+		
+        glColor3f(0.0f,0.0f,1.0f);
+		glVertex3f(-0.25f, 0.25f, 0.25f);	
+		glVertex3f(-0.25f, 0.25f,-0.25f);		
+		glVertex3f(-0.25f,-0.25f,-0.25f);			
+		glVertex3f(-0.25f,-0.25f, 0.25f);				
+		
+        glColor3f(1.0f,0.0f,1.0f);
+		glVertex3f( 0.25f, 0.25f,-0.25f);	
+		glVertex3f( 0.25f, 0.25f, 0.25f);		
+		glVertex3f( 0.25f,-0.25f, 0.25f);			
+		glVertex3f( 0.25f,-0.25f,-0.25f);				
+	glEnd();											
+
     glFlush();
     glutSwapBuffers();
 }
@@ -217,16 +303,16 @@ void reshape(int w, int h)
 {
    // Set the viewport to be the entire drawing area of the window
    glViewport(0, 0, w, h);
-
+   // glViewport(0, 0, w/2, h/2);
    // Save the window size
    winw = w;
    winh = h;
 
    // Set up the projection
-   glMatrixMode(GL_PROJECTION);
+   glMatrixMode(GL_MODELVIEW);
    glLoadIdentity();
    gluOrtho2D(-1.0, 1.0, -1.0, 1.0);//默认就是这样的
-    
+   // gluOrtho2D(-1.0, 0.0, -1.0, 0.0);
     glMatrixMode(GL_MODELVIEW);  // Always go back to model/view mode
 }
 
@@ -247,8 +333,10 @@ int main(int argc, char** argv)
     //设置渲染
     glClearColor(0.0,0.0,0.0,0.0);       // the background color is white
     glPointSize(pointsize);
+    glEnable(GL_DEPTH_TEST); //没加入的话导致的问题就是会有“透视”功能。近处的东西不会挡住远处的。
+    //glShadeModel(GL_SMOOTH);
+    //glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     
-
     glutDisplayFunc(myDisplay);
     glutIdleFunc(myDisplay);
     //glutPassiveMotionFunc(myMovedMouse);

@@ -1,8 +1,8 @@
-PROJECT(rubberrect)
+PROJECT(cube)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-ADD_EXECUTABLE(rubberrect rubberrect.cpp) 
+ADD_EXECUTABLE(cube cube.cpp) 
 
 FIND_PACKAGE(OpenGL)
 

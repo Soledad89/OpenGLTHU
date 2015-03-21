@@ -103,41 +103,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named rubberrect
+# Target rules for targets named cube
 
 # Build rule for target.
-rubberrect: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 rubberrect
-.PHONY : rubberrect
+cube: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cube
+.PHONY : cube
 
 # fast build rule for target.
-rubberrect/fast:
-	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/build
-.PHONY : rubberrect/fast
+cube/fast:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/build
+.PHONY : cube/fast
 
-rubberrect.o: rubberrect.cpp.o
-.PHONY : rubberrect.o
+cube.o: cube.cpp.o
+.PHONY : cube.o
 
 # target to build an object file
-rubberrect.cpp.o:
-	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/rubberrect.cpp.o
-.PHONY : rubberrect.cpp.o
+cube.cpp.o:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/cube.cpp.o
+.PHONY : cube.cpp.o
 
-rubberrect.i: rubberrect.cpp.i
-.PHONY : rubberrect.i
+cube.i: cube.cpp.i
+.PHONY : cube.i
 
 # target to preprocess a source file
-rubberrect.cpp.i:
-	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/rubberrect.cpp.i
-.PHONY : rubberrect.cpp.i
+cube.cpp.i:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/cube.cpp.i
+.PHONY : cube.cpp.i
 
-rubberrect.s: rubberrect.cpp.s
-.PHONY : rubberrect.s
+cube.s: cube.cpp.s
+.PHONY : cube.s
 
 # target to generate assembly for a file
-rubberrect.cpp.s:
-	$(MAKE) -f CMakeFiles/rubberrect.dir/build.make CMakeFiles/rubberrect.dir/rubberrect.cpp.s
-.PHONY : rubberrect.cpp.s
+cube.cpp.s:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/cube.cpp.s
+.PHONY : cube.cpp.s
 
 # Help Target
 help:
@@ -147,10 +147,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... rubberrect"
-	@echo "... rubberrect.o"
-	@echo "... rubberrect.i"
-	@echo "... rubberrect.s"
+	@echo "... cube"
+	@echo "... cube.o"
+	@echo "... cube.i"
+	@echo "... cube.s"
 .PHONY : help
 
 

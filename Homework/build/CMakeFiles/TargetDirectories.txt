@@ -1,1 +1,1 @@
-/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build/CMakeFiles/rubberrect.dir
+/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build/CMakeFiles/cube.dir

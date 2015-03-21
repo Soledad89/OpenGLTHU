@@ -44,6 +44,7 @@ float d = 0.0;
 float len = 0.0;
 //float angle = 0.0;
 float red = 0.0, blue = 1.0, green = 1.0;
+float deg_pyr = 0.0;
 
 //<<<<<<<<<<<<<<<<<<<<<<<< myDisplay >>>>>>>>>>>>>>>>>
 // printbitmap
@@ -67,7 +68,7 @@ void myDisplay(void)
 {
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    float angle;
+    float angle = 0.0;
     glLoadIdentity();
     if (mouseleftdown)
     {
@@ -154,7 +155,89 @@ void myDisplay(void)
         glVertex3f(-0.4, 0.4, 0);
     glEnd();
     //quads_angle++;
+   
+	// Pyr
+    glLoadIdentity();									
+	glTranslatef(-0.5f,-0.5f,0.0f);					
+    if (pa == 3)
+        glRotatef(angle,a,b,0.0);
+    //glRotatef(deg_pyr,1.0f,0.0f,0.0f);
+	glBegin(GL_TRIANGLES);					
+		glColor3f(1.0f,0.0f,0.0f);		
+		glVertex3f( 0.0f, 0.25f, 0.0f);
+        glVertex3f(-0.25f,-0.25f, 0.25f);
+		glVertex3f( 0.25f,-0.25f, 0.25f);			
+		
+        glColor3f(0.0f,1.0f,0.0f);					
+		glVertex3f( 0.0f, 0.25f, 0.0f);			
+		glVertex3f( 0.25f,-0.25f, 0.25f);	
+		glVertex3f( 0.25f,-0.25f, -0.25f);
+	
+        glColor3f(0.0f,0.0f,1.0f);
+		glVertex3f( 0.0f, 0.25f, 0.0f);	
+		glVertex3f( 0.25f,-0.25f, -0.25f);				
+		glVertex3f(-0.25f,-0.25f, -0.25f);			
+
+        glColor3f(0.5f,0.5f,0.0f);
+		glVertex3f( 0.0f, 0.25f, 0.0f);		
+		glVertex3f(-0.25f,-0.25f,-0.25f);
+		glVertex3f(-0.25f,-0.25f, 0.25f);
+
+		glColor3f(0.0f,0.5f,0.5f);
+		glVertex3f(-0.25f,-0.25f,0.25f);
+		glVertex3f(0.25f,-0.25f,0.25f);
+		glVertex3f(0.25,-0.25f,-0.25f);
+
+		glColor3f(0.0f, 0.5f, 0.5f);
+		glVertex3f(0.25f,-0.25f,-0.25f);
+		glVertex3f(-0.25f,-0.25f,-0.25f);
+		glVertex3f(-0.25f,-0.25f,0.25f);
+	glEnd();
+    //deg_pyr ++;
     
+    
+	glLoadIdentity();						
+	glTranslatef(0.5f,-0.5f,0.0f);
+    if ( pa == 4)
+        glRotatef(angle,a,b,1.0f);
+	glBegin(GL_QUADS);			
+		glColor3f(0.0f,1.0f,0.0f);						
+		glVertex3f( 0.25f, 0.25f,-0.25f);				
+		glVertex3f(-0.25f, 0.25f,-0.25f);			
+		glVertex3f(-0.25f, 0.25f, 0.25f);		
+		glVertex3f( 0.25f, 0.25f, 0.25f);	
+		
+        glColor3f(1.0f,0.5f,0.0f);
+		glVertex3f( 0.25f,-0.25f, 0.25f);				
+		glVertex3f(-0.25f,-0.25f, 0.25f);			
+		glVertex3f(-0.25f,-0.25f,-0.25f);					
+		glVertex3f( 0.25f,-0.25f,-0.25f);				
+    
+        glColor3f(1.0f,0.0f,0.0f);
+        glVertex3f( 0.25f, 0.25f, 0.25f);
+		glVertex3f(-0.25f, 0.25f, 0.25f);	
+		glVertex3f(-0.25f,-0.25f, 0.25f);
+		glVertex3f( 0.25f,-0.25f, 0.25f);				
+
+        glColor3f(1.0f,1.0f,0.0f);
+		glVertex3f( 0.25f,-0.25f,-0.25f);		
+		glVertex3f(-0.25f,-0.25f,-0.25f);			
+		glVertex3f(-0.25f, 0.25f,-0.25f);				
+		glVertex3f( 0.25f, 0.25f,-0.25f);					
+		
+        glColor3f(0.0f,0.0f,1.0f);
+		glVertex3f(-0.25f, 0.25f, 0.25f);	
+		glVertex3f(-0.25f, 0.25f,-0.25f);		
+		glVertex3f(-0.25f,-0.25f,-0.25f);			
+		glVertex3f(-0.25f,-0.25f, 0.25f);				
+		
+        glColor3f(1.0f,0.0f,1.0f);
+		glVertex3f( 0.25f, 0.25f,-0.25f);	
+		glVertex3f( 0.25f, 0.25f, 0.25f);		
+		glVertex3f( 0.25f,-0.25f, 0.25f);			
+		glVertex3f( 0.25f,-0.25f,-0.25f);				
+	glEnd();											
+
     glFlush();
     glutSwapBuffers();
 }
@@ -217,7 +300,7 @@ void reshape(int w, int h)
 {
    // Set the viewport to be the entire drawing area of the window
    glViewport(0, 0, w, h);
-
+   // glViewport(0, 0, w/2, h/2);
    // Save the window size
    winw = w;
    winh = h;
@@ -225,8 +308,8 @@ void reshape(int w, int h)
    // Set up the projection
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
-   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);//默认就是这样的
-    
+//   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);//默认就是这样的
+    gluOrtho2D(-1.0, 0.0, -1.0, 0.0);
     glMatrixMode(GL_MODELVIEW);  // Always go back to model/view mode
 }
 
