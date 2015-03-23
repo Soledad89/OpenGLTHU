@@ -35,14 +35,11 @@ struct GLintPoint
 
 static GLintPoint corner[2];
 bool mouseleftdown  = false;
-int pa = 0;
-int px = 0;
-int py = 0;
 
 float a, b;
 float d = 0.0;
 float len = 0.0;
-//float angle = 0.0;
+int flag = 1;
 float red = 0.0, blue = 1.0, green = 1.0;
 float deg_pyr = 0.0;
 
@@ -75,38 +72,7 @@ void myDisplay(void)
     {
         len = pow((corner[1].y - corner[0].y),2) + pow((corner[1].x - corner[0].x),2);
         angle = sqrt(len)/winw * 540;
-        
-        if ( corner[0].x >= winw/2 && corner[0].y >= winh/2)
-        {
-            pa = 1; px = 1; py = 1;
-        }
-        else if (corner[0].x <= winw/2 && corner[0].y >= winh/2)
-        {
-            pa = 2;px = -1;py = 1;
-        }
-        else if (corner[0].x <= winw/2 && corner[0].y <= winh/2)
-        {
-            pa = 3;px = -1;py = 1;
-        }
-        else
-        {
-            pa = 4;px = 1;py = -1;
-        }
-        
-        
-        if (corner[1].x == corner[0].x)
-        {
-            if (corner[1].y >= corner[0].y)
-            {
-                d = PI/2; a = 1; b = 0;
-            }
-            else
-            {
-                d = -PI/2; a = -1; b = 0;
-            }
-        }
-        
-        
+        flag = (corner[1].x > corner[0].x) ? 1 : -1; 
         if (corner[1].y == corner[0].y)
         {
             if (corner[1].x >= corner[0].x)
@@ -122,52 +88,14 @@ void myDisplay(void)
         if (corner[1].y != corner[0].y && corner[1].x != corner[0].x)
         {
             d = ((double)(corner[1].y - corner[0].y)/(double)(corner[1].x - corner[0].x));
-            a = px; b = - px / (d * py);
+            a = flag; b = - flag / (d * py);
         }
     }
     
-
-    glLoadIdentity();
-    glTranslatef(-0.5, 0.5, 0.0);
-    if (pa == 2)
-        glRotatef(angle,a,b,0.0);
-    glBegin(GL_TRIANGLES);
-        glColor3f(0.0f, 1.0f, 0.0f);
-        glVertex3f(-0.4, -0.4, 0);
-        glColor3f(1.0f, 0.0f, 0.0f);
-        glVertex3f(0.4, -0.4, 0);
-        glColor3f(0.0f, 0.0f, 1.0f);
-        glVertex3f(0, 0.4, 0);
-    glEnd();
-    
-    glLoadIdentity();
-    glColor3f(red, green, blue);
-    glTranslatef(0.5, 0.5, 0.0);
-    if ( pa == 1)
-        glRotatef(angle,a,b,0.0);
-    
-    glBegin(GL_QUADS);
-        glColor3f(0.5, 0.5, 1);
-        glVertex3f(-0.4,-0.4,0.0);
-        glColor3f(1, 1, 0.5);
-        glVertex3f(0.4,-0.4,0.0);
-        glColor3f(1, 0.5, 0.5);
-        glVertex3f(0.4,0.4,0.0);
-        glColor3f(0.5, 0.5, 0.5);
-        glVertex3f(-0.4, 0.4, 0);
-    glEnd();
-    //quads_angle++;
-   
-	// Pyr
-    //glMatrixMode(GL_MODELVIEW);
-
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    //gluLookAt (0.0, 0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-
-    glTranslatef(-0.5f,-0.5f,0.0f);
-    if (pa == 3)
-        glRotatef(angle,a,b,0.0);
+   // glTranslatef(-0.5f,-0.5f,0.0f);
+    glRotatef(angle,a,b,0.0);
     //glRotatef(deg_pyr,1.0f,0.0f,0.0f);
 	glBegin(GL_TRIANGLES);					
 		glColor3f(1.0f,0.0f,0.0f);		
