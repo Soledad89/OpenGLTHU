@@ -159,9 +159,13 @@ void myDisplay(void)
     //quads_angle++;
    
 	// Pyr
-    
-    glLoadIdentity();									
-	glTranslatef(-0.5f,-0.5f,0.0f);					
+    //glMatrixMode(GL_MODELVIEW);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    //gluLookAt (0.0, 0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+
+    glTranslatef(-0.5f,-0.5f,0.0f);
     if (pa == 3)
         glRotatef(angle,a,b,0.0);
     //glRotatef(deg_pyr,1.0f,0.0f,0.0f);
@@ -198,8 +202,9 @@ void myDisplay(void)
 	glEnd();
     //deg_pyr ++;
     
+    //glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
     
-	glLoadIdentity();						
 	glTranslatef(0.5f,-0.5f,0.0f);
     if ( pa == 4)
         glRotatef(angle,a,b,0.0f);
@@ -240,7 +245,7 @@ void myDisplay(void)
 		glVertex3f( 0.25f,-0.25f, 0.25f);			
 		glVertex3f( 0.25f,-0.25f,-0.25f);				
 	glEnd();											
-
+    //glMatrixMode(GL_MODELVIEW);
     glFlush();
     glutSwapBuffers();
 }
@@ -309,10 +314,10 @@ void reshape(int w, int h)
    winh = h;
 
    // Set up the projection
-   glMatrixMode(GL_MODELVIEW);
+   glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
-   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);//默认就是这样的
-   // gluOrtho2D(-1.0, 0.0, -1.0, 0.0);
+   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);//默认就是这样的, 如果前面不设置成gL_Projection，这条语句将不会起作用。
+   //gluOrtho2D(-1.0, 0.0, -1.0, 0.0);
     glMatrixMode(GL_MODELVIEW);  // Always go back to model/view mode
 }
 
@@ -333,7 +338,7 @@ int main(int argc, char** argv)
     //设置渲染
     glClearColor(0.0,0.0,0.0,0.0);       // the background color is white
     glPointSize(pointsize);
-    glEnable(GL_DEPTH_TEST); //没加入的话导致的问题就是会有“透视”功能。近处的东西不会挡住远处的。
+    glEnable(GL_DEPTH_TEST); //没加入的话导致的问题就是会有“透明”的效果。近处的东西不会挡住远处的。
     //glShadeModel(GL_SMOOTH);
     //glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     
