@@ -1,8 +1,8 @@
-PROJECT(cube)
+PROJECT(week3)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-ADD_EXECUTABLE(cube cube.cpp) 
+ADD_EXECUTABLE(week3 week3.cpp) 
 
 FIND_PACKAGE(OpenGL)
 

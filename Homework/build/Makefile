@@ -103,41 +103,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named cube
+# Target rules for targets named week3
 
 # Build rule for target.
-cube: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 cube
-.PHONY : cube
+week3: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 week3
+.PHONY : week3
 
 # fast build rule for target.
-cube/fast:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/build
-.PHONY : cube/fast
+week3/fast:
+	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/build
+.PHONY : week3/fast
 
-cube.o: cube.cpp.o
-.PHONY : cube.o
+week3.o: week3.cpp.o
+.PHONY : week3.o
 
 # target to build an object file
-cube.cpp.o:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/cube.cpp.o
-.PHONY : cube.cpp.o
+week3.cpp.o:
+	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/week3.cpp.o
+.PHONY : week3.cpp.o
 
-cube.i: cube.cpp.i
-.PHONY : cube.i
+week3.i: week3.cpp.i
+.PHONY : week3.i
 
 # target to preprocess a source file
-cube.cpp.i:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/cube.cpp.i
-.PHONY : cube.cpp.i
+week3.cpp.i:
+	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/week3.cpp.i
+.PHONY : week3.cpp.i
 
-cube.s: cube.cpp.s
-.PHONY : cube.s
+week3.s: week3.cpp.s
+.PHONY : week3.s
 
 # target to generate assembly for a file
-cube.cpp.s:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/cube.cpp.s
-.PHONY : cube.cpp.s
+week3.cpp.s:
+	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/week3.cpp.s
+.PHONY : week3.cpp.s
 
 # Help Target
 help:
@@ -147,10 +147,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... cube"
-	@echo "... cube.o"
-	@echo "... cube.i"
-	@echo "... cube.s"
+	@echo "... week3"
+	@echo "... week3.o"
+	@echo "... week3.i"
+	@echo "... week3.s"
 .PHONY : help
 
 

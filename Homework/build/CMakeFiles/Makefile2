@@ -53,38 +53,38 @@ CMAKE_SOURCE_DIR = /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework
 CMAKE_BINARY_DIR = /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/cube.dir
+# Target rules for target CMakeFiles/week3.dir
 
 # All Build rule for target.
-CMakeFiles/cube.dir/all:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/depend
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/build
+CMakeFiles/week3.dir/all:
+	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/depend
+	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build/CMakeFiles  1
-	@echo "Built target cube"
-.PHONY : CMakeFiles/cube.dir/all
+	@echo "Built target week3"
+.PHONY : CMakeFiles/week3.dir/all
 
 # Include target in all.
-all: CMakeFiles/cube.dir/all
+all: CMakeFiles/week3.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/cube.dir/rule: cmake_check_build_system
+CMakeFiles/week3.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cube.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/week3.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/build/CMakeFiles 0
-.PHONY : CMakeFiles/cube.dir/rule
+.PHONY : CMakeFiles/week3.dir/rule
 
 # Convenience name for target.
-cube: CMakeFiles/cube.dir/rule
-.PHONY : cube
+week3: CMakeFiles/week3.dir/rule
+.PHONY : week3
 
 # clean rule for target.
-CMakeFiles/cube.dir/clean:
-	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/clean
-.PHONY : CMakeFiles/cube.dir/clean
+CMakeFiles/week3.dir/clean:
+	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/clean
+.PHONY : CMakeFiles/week3.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/cube.dir/clean
+clean: CMakeFiles/week3.dir/clean
 .PHONY : clean
 
 #=============================================================================

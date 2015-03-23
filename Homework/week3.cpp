@@ -68,12 +68,13 @@ void myDisplay(void)
 {
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
     float angle = 0.0;
     glLoadIdentity();
     if (mouseleftdown)
     {
         len = pow((corner[1].y - corner[0].y),2) + pow((corner[1].x - corner[0].x),2);
-        angle = sqrt(len)/winw * 360;
+        angle = sqrt(len)/winw * 540;
         
         if ( corner[0].x >= winw/2 && corner[0].y >= winh/2)
         {
@@ -125,6 +126,7 @@ void myDisplay(void)
         }
     }
     
+
     glLoadIdentity();
     glTranslatef(-0.5, 0.5, 0.0);
     if (pa == 2)
@@ -157,8 +159,13 @@ void myDisplay(void)
     //quads_angle++;
    
 	// Pyr
-    glLoadIdentity();									
-	glTranslatef(-0.5f,-0.5f,0.0f);					
+    //glMatrixMode(GL_MODELVIEW);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    //gluLookAt (0.0, 0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+
+    glTranslatef(-0.5f,-0.5f,0.0f);
     if (pa == 3)
         glRotatef(angle,a,b,0.0);
     //glRotatef(deg_pyr,1.0f,0.0f,0.0f);
@@ -173,7 +180,7 @@ void myDisplay(void)
 		glVertex3f( 0.25f,-0.25f, 0.25f);	
 		glVertex3f( 0.25f,-0.25f, -0.25f);
 	
-        glColor3f(0.0f,0.0f,1.0f);
+        glColor3f(0.0f,0.0f,0.5f);
 		glVertex3f( 0.0f, 0.25f, 0.0f);	
 		glVertex3f( 0.25f,-0.25f, -0.25f);				
 		glVertex3f(-0.25f,-0.25f, -0.25f);			
@@ -185,21 +192,22 @@ void myDisplay(void)
 
 		glColor3f(0.0f,0.5f,0.5f);
 		glVertex3f(-0.25f,-0.25f,0.25f);
-		glVertex3f(0.25f,-0.25f,0.25f);
+		glVertex3f(-0.25f,-0.25f,-0.25f);
 		glVertex3f(0.25,-0.25f,-0.25f);
 
 		glColor3f(0.0f, 0.5f, 0.5f);
 		glVertex3f(0.25f,-0.25f,-0.25f);
-		glVertex3f(-0.25f,-0.25f,-0.25f);
+		glVertex3f(0.25f,-0.25f,0.25f);
 		glVertex3f(-0.25f,-0.25f,0.25f);
 	glEnd();
     //deg_pyr ++;
     
+    //glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
     
-	glLoadIdentity();						
 	glTranslatef(0.5f,-0.5f,0.0f);
     if ( pa == 4)
-        glRotatef(angle,a,b,1.0f);
+        glRotatef(angle,a,b,0.0f);
 	glBegin(GL_QUADS);			
 		glColor3f(0.0f,1.0f,0.0f);						
 		glVertex3f( 0.25f, 0.25f,-0.25f);				
@@ -237,7 +245,7 @@ void myDisplay(void)
 		glVertex3f( 0.25f,-0.25f, 0.25f);			
 		glVertex3f( 0.25f,-0.25f,-0.25f);				
 	glEnd();											
-
+    //glMatrixMode(GL_MODELVIEW);
     glFlush();
     glutSwapBuffers();
 }
@@ -308,8 +316,8 @@ void reshape(int w, int h)
    // Set up the projection
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
-//   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);//默认就是这样的
-    gluOrtho2D(-1.0, 0.0, -1.0, 0.0);
+   gluOrtho2D(-1.0, 1.0, -1.0, 1.0);//默认就是这样的, 如果前面不设置成gL_Projection，这条语句将不会起作用。
+   //gluOrtho2D(-1.0, 0.0, -1.0, 0.0);
     glMatrixMode(GL_MODELVIEW);  // Always go back to model/view mode
 }
 
@@ -330,8 +338,10 @@ int main(int argc, char** argv)
     //设置渲染
     glClearColor(0.0,0.0,0.0,0.0);       // the background color is white
     glPointSize(pointsize);
+    glEnable(GL_DEPTH_TEST); //没加入的话导致的问题就是会有“透明”的效果。近处的东西不会挡住远处的。
+    //glShadeModel(GL_SMOOTH);
+    //glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     
-
     glutDisplayFunc(myDisplay);
     glutIdleFunc(myDisplay);
     //glutPassiveMotionFunc(myMovedMouse);
