@@ -210,6 +210,12 @@
 		EBB884FF1AB7DB1D00E0B801 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"/Users/wangbo1/Documents/编译程序/Simple\\ OpenGL\\ Image\\ Library/include",
+				);
+				LIBRARY_SEARCH_PATHS = "/Users/wangbo1/Documents/编译程序/Simple\\ OpenGL\\ Image\\ Library/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
