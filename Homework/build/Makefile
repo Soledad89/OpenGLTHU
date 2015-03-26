@@ -103,41 +103,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named week3
+# Target rules for targets named week4
 
 # Build rule for target.
-week3: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 week3
-.PHONY : week3
+week4: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 week4
+.PHONY : week4
 
 # fast build rule for target.
-week3/fast:
-	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/build
-.PHONY : week3/fast
+week4/fast:
+	$(MAKE) -f CMakeFiles/week4.dir/build.make CMakeFiles/week4.dir/build
+.PHONY : week4/fast
 
-week3.o: week3.cpp.o
-.PHONY : week3.o
+week4.o: week4.cpp.o
+.PHONY : week4.o
 
 # target to build an object file
-week3.cpp.o:
-	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/week3.cpp.o
-.PHONY : week3.cpp.o
+week4.cpp.o:
+	$(MAKE) -f CMakeFiles/week4.dir/build.make CMakeFiles/week4.dir/week4.cpp.o
+.PHONY : week4.cpp.o
 
-week3.i: week3.cpp.i
-.PHONY : week3.i
+week4.i: week4.cpp.i
+.PHONY : week4.i
 
 # target to preprocess a source file
-week3.cpp.i:
-	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/week3.cpp.i
-.PHONY : week3.cpp.i
+week4.cpp.i:
+	$(MAKE) -f CMakeFiles/week4.dir/build.make CMakeFiles/week4.dir/week4.cpp.i
+.PHONY : week4.cpp.i
 
-week3.s: week3.cpp.s
-.PHONY : week3.s
+week4.s: week4.cpp.s
+.PHONY : week4.s
 
 # target to generate assembly for a file
-week3.cpp.s:
-	$(MAKE) -f CMakeFiles/week3.dir/build.make CMakeFiles/week3.dir/week3.cpp.s
-.PHONY : week3.cpp.s
+week4.cpp.s:
+	$(MAKE) -f CMakeFiles/week4.dir/build.make CMakeFiles/week4.dir/week4.cpp.s
+.PHONY : week4.cpp.s
 
 # Help Target
 help:
@@ -147,10 +147,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... week3"
-	@echo "... week3.o"
-	@echo "... week3.i"
-	@echo "... week3.s"
+	@echo "... week4"
+	@echo "... week4.o"
+	@echo "... week4.i"
+	@echo "... week4.s"
 .PHONY : help
 
 

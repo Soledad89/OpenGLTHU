@@ -9,20 +9,25 @@
 #include <string>
 using namespace std;
 
-GLfloat	xrot = 0.0;				// X Rotation ( NEW )
-GLfloat	yrot = 0.0;				// Y Rotation ( NEW )
-GLfloat	zrot = 0.0;				// Z Rotation ( NEW )
+GLfloat	xrot = 30.0;				// X Rotation ( NEW )
+GLfloat	yrot = 30.0;				// Y Rotation ( NEW )
+GLfloat	zrot = 30.0;				// Z Rotation ( NEW )
 
-static GLuint texture[1];
+GLuint texture[1];
+
+bool   gFlag = false;                                              // G健是否按下
+GLuint filter = 0;                                          // 使用哪一个纹理过滤器
+GLuint fogMode[]= { GL_EXP, GL_EXP2, GL_LINEAR};		// 雾气的模式
+GLuint fogfilter= 0;                                    // 使用哪一种雾气
+GLfloat fogColor[4]= {0.5f, 0.5f, 0.5f, 1.0f};          // 雾的颜色设为白色
 
 int LoadGLTextures()
 {
-    /* load an image file directly as a new OpenGL texture */
-    glGenTextures(1, &texture[0]);
     
     texture[0] = SOIL_load_OGL_texture
     (
-        "Data/NeHe.bmp",
+        "/Users/wangbo1/Documents/OpenCV/OpenGL/OpenGL-THU/Homework/HomeworkXcodeProject/Data/NeHe.bmp",//为什么只有全路径才可以？？？
+        //"NeHe.bmp",
         SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID,
         SOIL_FLAG_INVERT_Y
@@ -41,7 +46,19 @@ int LoadGLTextures()
 int init()
 {
     if(!LoadGLTextures())
+    {
+        exit(0);
         return 0;
+    }
+
+    glClearColor(0.5f,0.5f,0.5f,1.0f);			// 设置背景的颜色为雾气的颜色
+    glFogi(GL_FOG_MODE, fogMode[fogfilter]);		// 设置雾气的模式
+    glFogfv(GL_FOG_COLOR, fogColor);			// 设置雾的颜色
+    glFogf(GL_FOG_DENSITY, 0.35f);              // 设置雾的密度
+    glHint(GL_FOG_HINT, GL_DONT_CARE);			// 设置系统如何计算雾气
+    glFogf(GL_FOG_START, 1.0f);                 // 雾气的开始位置
+    glFogf(GL_FOG_END, 5.0f);                   // 雾气的结束位置
+    glEnable(GL_FOG);					// 使用雾气
     
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_CULL_FACE);
@@ -49,7 +66,6 @@ int init()
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
     
     glShadeModel(GL_SMOOTH);
-    glClearColor(0.0f,0.0f,0.0f,0.5f);
     glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
@@ -159,27 +175,61 @@ void reshape(int w, int h)
     glTranslatef(0.0, 0.0, -3.6);
 }
 
-void keyboard(int key, int x, int y)
-//void keyboard(unsigned char key, int x, int y)
+void mykeyboard(unsigned char key, int x, int y)
 {
     switch (key) {
         case 27:
             exit(0);
             break;
+        case ' ':
+            if (!gFlag)
+            {
+                gFlag = true;
+                fogfilter += 1;
+                if (fogfilter > 2)
+                {
+                    fogfilter = 0;
+                }
+                glFogi(GL_FOG_MODE, fogMode[fogfilter]);   // Fog Mode
+
+            }
+            break;
+        default:
+            //gFlag = false;
+            break;
+    }
+}
+
+void keyboardup(unsigned char key, int x, int y)
+{
+    switch (key) {
+        case ' ':
+            gFlag = false;
+            break;
+            
+        default:
+            break;
+    }
+}
+
+void keyboard(int key, int x, int y)
+//void keyboard(unsigned char key, int x, int y)
+{
+    switch (key) {
         case GLUT_KEY_LEFT:
-            xrot -= 1.0f;
+            yrot -= 3.0f;
             glutPostRedisplay();
             break;
         case GLUT_KEY_UP:
-            yrot += 1.0f;
+            xrot += 3.0f;
             glutPostRedisplay();
             break;
         case GLUT_KEY_DOWN:
-            yrot -= 1.0f;
+            xrot -= 3.0f;
             glutPostRedisplay();
             break;
         case GLUT_KEY_RIGHT:
-            xrot += 1.0f;
+            yrot += 3.0f;
             glutPostRedisplay();
             break;
         default:
@@ -200,7 +250,8 @@ int main(int argc, char** argv)
     init();
     glutDisplayFunc(display);
     glutIdleFunc(display);
-    //glutKeyboardFunc(keyboard);
+    glutKeyboardFunc(mykeyboard);
+    glutKeyboardUpFunc(keyboardup);
     glutSpecialFunc(keyboard);
 	glutReshapeFunc(reshape);
     glutMainLoop(); 		     // go into a perpetual loop
