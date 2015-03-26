@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB0B86151AC39A240001ED49 /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0B86141AC39A240001ED49 /* libSOIL.a */; };
+		EB0B86171AC39A2B0001ED49 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0B86161AC39A2B0001ED49 /* CoreFoundation.framework */; };
 		EB9A7E5C1AC00AF800BF4BFB /* week4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E5B1AC00AF800BF4BFB /* week4.cpp */; };
 		EBB885041AB7DC4A00E0B801 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBB885031AB7DC4A00E0B801 /* GLUT.framework */; };
 		EBB885061AB7DC5500E0B801 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBB885051AB7DC5500E0B801 /* OpenGL.framework */; };
@@ -25,6 +27,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EB0B86141AC39A240001ED49 /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = "../../../../../编译程序/SOIL/lib/libSOIL.a"; sourceTree = "<group>"; };
+		EB0B86161AC39A2B0001ED49 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		EB0B861F1AC3AC670001ED49 /* NeHe.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = NeHe.bmp; path = Data/NeHe.bmp; sourceTree = "<group>"; };
 		EB9A7E5B1AC00AF800BF4BFB /* week4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = week4.cpp; sourceTree = "<group>"; };
 		EBB884F71AB7DB1D00E0B801 /* HomeworkXcodeProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HomeworkXcodeProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBB885031AB7DC4A00E0B801 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -36,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB0B86171AC39A2B0001ED49 /* CoreFoundation.framework in Frameworks */,
+				EB0B86151AC39A240001ED49 /* libSOIL.a in Frameworks */,
 				EBB885061AB7DC5500E0B801 /* OpenGL.framework in Frameworks */,
 				EBB885041AB7DC4A00E0B801 /* GLUT.framework in Frameworks */,
 			);
@@ -47,7 +54,10 @@
 		EBB884EE1AB7DB1D00E0B801 = {
 			isa = PBXGroup;
 			children = (
+				EB0B861F1AC3AC670001ED49 /* NeHe.bmp */,
+				EB0B86141AC39A240001ED49 /* libSOIL.a */,
 				EB9A7E5B1AC00AF800BF4BFB /* week4.cpp */,
+				EB0B86161AC39A2B0001ED49 /* CoreFoundation.framework */,
 				EBB885051AB7DC5500E0B801 /* OpenGL.framework */,
 				EBB885031AB7DC4A00E0B801 /* GLUT.framework */,
 				EBB884F91AB7DB1D00E0B801 /* HomeworkXcodeProject */,
@@ -210,12 +220,18 @@
 		EBB884FF1AB7DB1D00E0B801 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"/Users/wangbo1/Documents/编译程序/Simple\\ OpenGL\\ Image\\ Library/include",
+					"/Users/wangbo1/Documents/编译程序/SOIL/include",
 				);
-				LIBRARY_SEARCH_PATHS = "/Users/wangbo1/Documents/编译程序/Simple\\ OpenGL\\ Image\\ Library/lib";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)",
+					"/Users/wangbo1/Documents/编译程序/SOIL/lib",
+				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -223,6 +239,18 @@
 		EBB885001AB7DB1D00E0B801 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"/Users/wangbo1/Documents/编译程序/Simple",
+					OpenGL,
+					Image,
+					Library/lib,
+					"/Users/wangbo1/Documents/编译程序/SOIL/lib",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
