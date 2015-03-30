@@ -175,7 +175,7 @@ void reshape(int w, int h)
     glTranslatef(0.0, 0.0, -3.6);
 }
 
-void mykeyboard(unsigned char key, int x, int y)
+void keyboard(unsigned char key, int x, int y)
 {
     switch (key) {
         case 27:
@@ -250,7 +250,7 @@ int main(int argc, char** argv)
     init();
     glutDisplayFunc(display);
     glutIdleFunc(display);
-    glutKeyboardFunc(mykeyboard);
+    glutKeyboardFunc(keyboard);
     glutKeyboardUpFunc(keyboardup);
     glutSpecialFunc(keyboard);
 	glutReshapeFunc(reshape);
