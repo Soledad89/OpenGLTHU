@@ -10,6 +10,8 @@
 	<string>HomeworkXcodeProject</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>0AD0C849479A32F1343431ACE360C8468C08ED0F</key>
+		<string>github.com:Soledad89/SOIL.git</string>
 		<key>DF9A0D413065F69E2774E964293983DCC6F85E52</key>
 		<string>github.com:Soledad89/OpenGL-THU.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>Homework/HomeworkXcodeProject/HomeworkXcodeProject.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>0AD0C849479A32F1343431ACE360C8468C08ED0F</key>
+		<string>../../../../../../../%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F/SOIL</string>
 		<key>DF9A0D413065F69E2774E964293983DCC6F85E52</key>
 		<string>../../../..</string>
 	</dict>
@@ -35,6 +39,14 @@
 			<string>DF9A0D413065F69E2774E964293983DCC6F85E52</string>
 			<key>IDESourceControlWCCName</key>
 			<string>OpenGL-THU</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0AD0C849479A32F1343431ACE360C8468C08ED0F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SOIL</string>
 		</dict>
 	</array>
 </dict>
