@@ -1,5 +1,5 @@
 PROJECT(week4)
-
+# This CmakeLists can only be used before the 4th week homework.
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 ADD_EXECUTABLE(week4 week4.cpp) 
