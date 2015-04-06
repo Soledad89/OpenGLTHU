@@ -13,13 +13,13 @@ GLfloat	xrot = 30.0;				// X Rotation ( NEW )
 GLfloat	yrot = 30.0;				// Y Rotation ( NEW )
 GLfloat	zrot = 30.0;				// Z Rotation ( NEW )
 
-GLuint texture[1];
+float points[45][45][3];    // The Array For The Points On The Grid Of Our "Wave"
+int wiggle_count = 0;		// Counter Used To Control How Fast Flag Waves
 
-bool   gFlag = false;                                              // G健是否按下
-GLuint filter = 0;                                          // 使用哪一个纹理过滤器
-GLuint fogMode[]= { GL_EXP, GL_EXP2, GL_LINEAR};		// 雾气的模式
-GLuint fogfilter= 0;                                    // 使用哪一种雾气
-GLfloat fogColor[4]= {0.5f, 0.5f, 0.5f, 1.0f};          // 雾的颜色设为白色
+GLfloat hold;				// Temporarily Holds A Floating Point Value
+int flag = 0;
+
+GLuint	texture[1];			// Storage For One Texture ( NEW )
 
 int LoadGLTextures()
 {
@@ -51,20 +51,25 @@ int init()
         return 0;
     }
 
-    glClearColor(0.5f,0.5f,0.5f,1.0f);			// 设置背景的颜色为雾气的颜色
-    glFogi(GL_FOG_MODE, fogMode[fogfilter]);		// 设置雾气的模式
-    glFogfv(GL_FOG_COLOR, fogColor);			// 设置雾的颜色
-    glFogf(GL_FOG_DENSITY, 0.35f);              // 设置雾的密度
-    glHint(GL_FOG_HINT, GL_DONT_CARE);			// 设置系统如何计算雾气
-    glFogf(GL_FOG_START, 1.0f);                 // 雾气的开始位置
-    glFogf(GL_FOG_END, 5.0f);                   // 雾气的结束位置
-    glEnable(GL_FOG);					// 使用雾气
-    
+	for(int x=0; x<45; x++)
+	{
+		for(int y=0; y<45; y++)
+		{
+			points[x][y][0]=float((x/5.0f)-4.5f);
+			points[x][y][1]=float((y/5.0f)-4.5f);
+			points[x][y][2]=float(sin((((x/5.0f)*40.0f)/360.0f)*3.141592654*2.0f));
+		}
+	}
+
+	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);				// Black Background
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
     
+	glPolygonMode( GL_BACK, GL_FILL );					// Back Face Is Solid
+	glPolygonMode( GL_FRONT, GL_LINE );					// Front Face Is Made Of Lines
+	
     glShadeModel(GL_SMOOTH);
     glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
@@ -75,93 +80,69 @@ int init()
 
 void display(void)
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-    glTranslatef(0.0f,0.0f,-5.0f);
-    glRotatef(xrot,1.0f,0.0f,0.0f);
-    glRotatef(yrot,0.0f,1.0f,0.0f);
-    glRotatef(zrot,0.0f,0.0f,1.0f);
-    
-    glBindTexture(GL_TEXTURE_2D,texture[0]);
-    
-    glBegin(GL_QUADS);
-    // Front Face
-    // Bottom Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
-    // Bottom Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);
-    // Top Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);
-    // Top Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);
-    glEnd();
-    
-    glBindTexture(GL_TEXTURE_2D,texture[0]);
-    glBegin(GL_QUADS);
-    // Back Face
-    // Bottom Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f);
-    // Top Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);
-    // Top Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);
-    // Bottom Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f);
-    glEnd();
-    
-    glBindTexture(GL_TEXTURE_2D,texture[0]);
-    glBegin(GL_QUADS);
-    // Top Face
-    // Top Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);
-    // Bottom Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f,  1.0f,  1.0f);
-    // Bottom Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f,  1.0f,  1.0f);
-    // Top Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);
-    glEnd();
-    
-    glBindTexture(GL_TEXTURE_2D,texture[0]);
-    glBegin(GL_QUADS);
-    // Bottom Face
-    // Top Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, -1.0f, -1.0f);
-    // Top Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f, -1.0f, -1.0f);
-    // Bottom Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);
-    // Bottom Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
-    glEnd();
-    
-    glBindTexture(GL_TEXTURE_2D,texture[0]);
-    glBegin(GL_QUADS);
-    // Right face
-    // Bottom Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f);
-    // Top Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);
-    // Top Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);
-    // Bottom Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);
-    glEnd();
-    
-    glBindTexture(GL_TEXTURE_2D,texture[0]);
-    glBegin(GL_QUADS);
-    // Left Face
-    // Bottom Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f);
-    // Bottom Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
-    // Top Right Of The Texture and Quad 
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f); 
-    // Top Left Of The Texture and Quad 
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f); 
-    glEnd(); 
-    
+	
+	int x, y;
+	float float_x, float_y, float_xb, float_yb;
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear The Screen And The Depth Buffer
+	glLoadIdentity();									// Reset The View
+
+	glTranslatef(0.0f,0.0f,-12.0f);
+	  
+	glRotatef(xrot,1.0f,0.0f,0.0f);
+	glRotatef(yrot,0.0f,1.0f,0.0f);  
+	glRotatef(zrot,0.0f,0.0f,1.0f);
+//	glRotatef(90,1.0f,0.0f,0.0f);
+
+	glBindTexture(GL_TEXTURE_2D, texture[0]);
+
+	glBegin(GL_QUADS);
+	for( x = 0; x < 44; x++ )
+	{
+		for( y = 0; y < 44; y++ )
+		{
+			float_x = float(x)/44.0f;
+			float_y = float(y)/44.0f;
+			float_xb = float(x+1)/44.0f;
+			float_yb = float(y+1)/44.0f;
+
+			glTexCoord2f( float_x, float_y);
+			glVertex3f( points[x][y][0], points[x][y][1], points[x][y][2] );
+
+			glTexCoord2f( float_x, float_yb );
+			glVertex3f( points[x][y+1][0], points[x][y+1][1], points[x][y+1][2] );
+
+			glTexCoord2f( float_xb, float_yb );
+			glVertex3f( points[x+1][y+1][0], points[x+1][y+1][1], points[x+1][y+1][2] );
+
+			glTexCoord2f( float_xb, float_y );
+			glVertex3f( points[x+1][y][0], points[x+1][y][1], points[x+1][y][2] );
+		}
+	}
+	glEnd();
+
+	if( wiggle_count == 2 )
+	{
+		for( y = 0; y < 45; y++ )
+		{
+			hold=points[0][y][2];
+			for( x = 0; x < 44; x++)
+			{
+				points[x][y][2] = points[x+1][y][2];
+			}
+			points[44][y][2]=hold;
+		}
+		wiggle_count = 0;
+	}
+
+	wiggle_count++;
+
+	xrot+=0.3f;
+	yrot+=0.2f;
+	zrot+=0.4f;
+
     glutSwapBuffers();
+	return 1;
 }
 
 void reshape(int w, int h)
