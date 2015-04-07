@@ -14,16 +14,10 @@ GLfloat	xrot = 00.0;
 GLfloat	yrot = 180.0;
 GLfloat	zrot = 00.0;
 
-float coords[dim][dim][3];
+float points[dim][dim][3];
 int vel = 0;
 
-GLfloat buf;
-
-bool   gFlag = false;
-GLuint filter = 0;                                          // 使用哪一个纹理过滤器
-GLuint fogMode[]= { GL_EXP, GL_EXP2, GL_LINEAR};		// 雾气的模式
-GLuint fogfilter= 0;                                    // 使用哪一种雾气
-GLfloat fogColor[4]= {0.5f, 0.5f, 0.5f, 1.0f};          // 雾的颜色设为白色
+GLfloat hold;
 
 GLuint	texture[1];			// Storage For One Texture ( NEW )
 
@@ -61,9 +55,9 @@ int init()
 	{
 		for(int y=0; y<dim; y++)
 		{
-			coords[x][y][0]=float((x*9.0f/(dim*1.0))-4.5f);
-			coords[x][y][1]=float((y*9.0f/(dim*1.0))-4.5f);
-			coords[x][y][2]=float(sin((x/(dim*0.5))*3.141592654*2.0f));
+			points[x][y][0]=float((x*9.0f/(dim*1.0))-4.5f);
+			points[x][y][1]=float((y*9.0f/(dim*1.0))-4.5f);
+			points[x][y][2]=float(sin((x/(dim*0.5))*3.141592654*2.0f));
 		}
 	}
 
@@ -75,7 +69,7 @@ int init()
     
 	glPolygonMode( GL_BACK, GL_FILL );
     glPolygonMode( GL_FRONT, GL_FILL);
-    //glPolygonMode( GL_FRONT, GL_LINE);
+    //glPolygonMode( GL_FRONT, GL_FILL);
     
     glShadeModel(GL_SMOOTH);
     glClearDepth(1.0f);
@@ -114,30 +108,30 @@ void display(void)
 			float_yb = float(y+1)/(dim/1.0-1);
 
 			glTexCoord2f( float_x, float_y);
-			glVertex3f( coords[x][y][0], coords[x][y][1], coords[x][y][2] );
+			glVertex3f( points[x][y][0], points[x][y][1], points[x][y][2] );
 
 			glTexCoord2f( float_x, float_yb );
-			glVertex3f( coords[x][y+1][0], coords[x][y+1][1], coords[x][y+1][2] );
+			glVertex3f( points[x][y+1][0], points[x][y+1][1], points[x][y+1][2] );
 
 			glTexCoord2f( float_xb, float_yb );
-			glVertex3f( coords[x+1][y+1][0], coords[x+1][y+1][1], coords[x+1][y+1][2] );
+			glVertex3f( points[x+1][y+1][0], points[x+1][y+1][1], points[x+1][y+1][2] );
 
 			glTexCoord2f( float_xb, float_y );
-			glVertex3f( coords[x+1][y][0], coords[x+1][y][1], coords[x+1][y][2] );
+			glVertex3f( points[x+1][y][0], points[x+1][y][1], points[x+1][y][2] );
 		}
 	}
 	glEnd();
 
-	if( vel == 10)
+	if( vel == 1)
 	{
 		for( y = 0; y < dim; y++ )
 		{
-			buf = coords[0][y][2];
+			hold=points[0][y][2];
 			for( x = 0; x < dim-1; x++)
 			{
-				coords[x][y][2] = coords[x+1][y][2];
+				points[x][y][2] = points[x+1][y][2];
 			}
-			coords[dim-1][y][2]=buf;
+			points[dim-1][y][2]=hold;
 		}
 		vel = 0;
 	}

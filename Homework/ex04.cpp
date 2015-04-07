@@ -128,7 +128,7 @@ void display(void)
 	}
 	glEnd();
 
-	if( vel == 10)
+	if( vel == 1)
 	{
 		for( y = 0; y < dim; y++ )
 		{
