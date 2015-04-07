@@ -6,8 +6,8 @@ CFLAGS += -c -O2 -Wall
 CXXFLAGS = -arch i386 -arch x86_64
 LDFLAGS += -framework OpenGL -framework GLUT -framework CoreFoundation
 
-TARGET = week5
-CFILES = week5.cpp
+TARGET = ex04
+CFILES = ex04.cpp
 OFILES = $(CFILES:.c=.o)
 
 INCLUDEDIR = /usr/local/include 

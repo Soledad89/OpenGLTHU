@@ -26,7 +26,7 @@ int LoadGLTextures()
     
     texture[0] = SOIL_load_OGL_texture
     (
-        "/Users/wangbo1/Documents/Computer_Graphics/OpenGL/OpenGL-THU/Homework/HomeworkXcodeProject/Data/NeHe.bmp",//为什么只有全路径才可以？？？
+        "/Users/wangbo1/Documents/Computer_Graphics/OpenGL/OpenGL-THU/Homework/HomeworkXcodeProject/Data/Crate.bmp",//为什么只有全路径才可以？？？
         //"NeHe.bmp",
         SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID,

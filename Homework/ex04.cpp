@@ -8,16 +8,22 @@
 #include <iostream>
 #include <string>
 using namespace std;
+#define dim 100
 
-GLfloat	xrot = 30.0;				// X Rotation ( NEW )
-GLfloat	yrot = 30.0;				// Y Rotation ( NEW )
-GLfloat	zrot = 30.0;				// Z Rotation ( NEW )
+GLfloat	xrot = 00.0;
+GLfloat	yrot = 180.0;
+GLfloat	zrot = 00.0;
 
-float points[45][45][3];    // The Array For The Points On The Grid Of Our "Wave"
-int wiggle_count = 0;		// Counter Used To Control How Fast Flag Waves
+float points[dim][dim][3];
+int vel = 0;
 
-GLfloat hold;				// Temporarily Holds A Floating Point Value
-int flag = 0;
+GLfloat hold;
+
+bool   gFlag = false;
+GLuint filter = 0;                                          // 使用哪一个纹理过滤器
+GLuint fogMode[]= { GL_EXP, GL_EXP2, GL_LINEAR};		// 雾气的模式
+GLuint fogfilter= 0;                                    // 使用哪一种雾气
+GLfloat fogColor[4]= {0.5f, 0.5f, 0.5f, 1.0f};          // 雾的颜色设为白色
 
 GLuint	texture[1];			// Storage For One Texture ( NEW )
 
@@ -26,7 +32,7 @@ int LoadGLTextures()
     
     texture[0] = SOIL_load_OGL_texture
     (
-        "/Users/wangbo1/Documents/Computer_Graphics/OpenGL/OpenGL-THU/Homework/HomeworkXcodeProject/Data/NeHe.bmp",//为什么只有全路径才可以？？？
+        "/Users/wangbo1/Documents/Computer_Graphics/OpenGL/OpenGL-THU/Homework/HomeworkXcodeProject/Data/Tim.bmp",//为什么只有全路径才可以？？？
         //"NeHe.bmp",
         SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID,
@@ -51,25 +57,26 @@ int init()
         return 0;
     }
 
-	for(int x=0; x<45; x++)
+	for(int x=0; x<dim; x++)
 	{
-		for(int y=0; y<45; y++)
+		for(int y=0; y<dim; y++)
 		{
-			points[x][y][0]=float((x/5.0f)-4.5f);
-			points[x][y][1]=float((y/5.0f)-4.5f);
-			points[x][y][2]=float(sin((((x/5.0f)*40.0f)/360.0f)*3.141592654*2.0f));
+			points[x][y][0]=float((x*9.0f/(dim*1.0))-4.5f);
+			points[x][y][1]=float((y*9.0f/(dim*1.0))-4.5f);
+			points[x][y][2]=float(sin((x/(dim*0.5))*3.141592654*2.0f));
 		}
 	}
 
-	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);				// Black Background
+	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
     
-	glPolygonMode( GL_BACK, GL_FILL );					// Back Face Is Solid
-	glPolygonMode( GL_FRONT, GL_LINE );					// Front Face Is Made Of Lines
-	
+	glPolygonMode( GL_BACK, GL_FILL );
+    glPolygonMode( GL_FRONT, GL_FILL);
+    //glPolygonMode( GL_FRONT, GL_FILL);
+    
     glShadeModel(GL_SMOOTH);
     glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
@@ -84,8 +91,8 @@ void display(void)
 	int x, y;
 	float float_x, float_y, float_xb, float_yb;
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear The Screen And The Depth Buffer
-	glLoadIdentity();									// Reset The View
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
 
 	glTranslatef(0.0f,0.0f,-12.0f);
 	  
@@ -97,14 +104,14 @@ void display(void)
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
 
 	glBegin(GL_QUADS);
-	for( x = 0; x < 44; x++ )
+	for( x = 0; x < dim-1; x++ )
 	{
-		for( y = 0; y < 44; y++ )
+		for( y = 0; y < dim-1; y++ )
 		{
-			float_x = float(x)/44.0f;
-			float_y = float(y)/44.0f;
-			float_xb = float(x+1)/44.0f;
-			float_yb = float(y+1)/44.0f;
+			float_x = float(x)/(dim/1.0-1);
+			float_y = float(y)/(dim/1.0-1);
+			float_xb = float(x+1)/(dim/1.0-1);
+			float_yb = float(y+1)/(dim/1.0-1);
 
 			glTexCoord2f( float_x, float_y);
 			glVertex3f( points[x][y][0], points[x][y][1], points[x][y][2] );
@@ -121,28 +128,23 @@ void display(void)
 	}
 	glEnd();
 
-	if( wiggle_count == 2 )
+	if( vel == 10)
 	{
-		for( y = 0; y < 45; y++ )
+		for( y = 0; y < dim; y++ )
 		{
 			hold=points[0][y][2];
-			for( x = 0; x < 44; x++)
+			for( x = 0; x < dim-1; x++)
 			{
 				points[x][y][2] = points[x+1][y][2];
 			}
-			points[44][y][2]=hold;
+			points[dim-1][y][2]=hold;
 		}
-		wiggle_count = 0;
+		vel = 0;
 	}
 
-	wiggle_count++;
-
-	xrot+=0.3f;
-	yrot+=0.2f;
-	zrot+=0.4f;
+	vel++;
 
     glutSwapBuffers();
-	return 1;
 }
 
 void reshape(int w, int h)
