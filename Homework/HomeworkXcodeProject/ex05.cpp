@@ -159,17 +159,6 @@ void mykeyboard(unsigned char key, int x, int y)
             exit(0);
             break;
         case ' ':
-            if (!gFlag)
-            {
-                gFlag = true;
-                fogfilter += 1;
-                if (fogfilter > 2)
-                {
-                    fogfilter = 0;
-                }
-                glFogi(GL_FOG_MODE, fogMode[fogfilter]);   // Fog Mode
-
-            }
             break;
         default:
             //gFlag = false;
@@ -181,7 +170,7 @@ void keyboardup(unsigned char key, int x, int y)
 {
     switch (key) {
         case ' ':
-            gFlag = false;
+            
             break;
             
         default:
