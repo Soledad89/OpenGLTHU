@@ -43,7 +43,7 @@ int main(int argc, char** argv)
 	glutInit(&argc, argv);          // initialize the toolkit
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // set the display mode
 	glutInitWindowSize(screenWidth, screenHeight); // set the window size
-	glutInitWindowPosition(200, 150); // set the window position on screen
+	glutInitWindowPosition(1024, 1024); // set the window position on screen
 	glutCreateWindow("Plot the Traianle and the roct"); // open the screen window
 	glutDisplayFunc(myDisplay);     // register the redraw function
 	myInit();                   

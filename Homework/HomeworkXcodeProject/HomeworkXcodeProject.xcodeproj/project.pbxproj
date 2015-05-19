@@ -11,7 +11,7 @@
 		EB0B86171AC39A2B0001ED49 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0B86161AC39A2B0001ED49 /* CoreFoundation.framework */; };
 		EBB885041AB7DC4A00E0B801 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBB885031AB7DC4A00E0B801 /* GLUT.framework */; };
 		EBB885061AB7DC5500E0B801 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBB885051AB7DC5500E0B801 /* OpenGL.framework */; };
-		EBF1B5191AE4DE0100970FE6 /* ex04.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBF1B5181AE4DE0100970FE6 /* ex04.cpp */; };
+		EBFA6E491AF799C00090C598 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = EBFA6E461AF799C00090C598 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,11 +29,14 @@
 /* Begin PBXFileReference section */
 		EB0B86141AC39A240001ED49 /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = "../../../../../编译程序/SOIL/lib/libSOIL.a"; sourceTree = "<group>"; };
 		EB0B86161AC39A2B0001ED49 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		EB0B861F1AC3AC670001ED49 /* NeHe.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = NeHe.bmp; path = Data/NeHe.bmp; sourceTree = "<group>"; };
 		EBB884F71AB7DB1D00E0B801 /* HomeworkXcodeProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HomeworkXcodeProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBB885031AB7DC4A00E0B801 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		EBB885051AB7DC5500E0B801 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		EBF1B5181AE4DE0100970FE6 /* ex04.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ex04.cpp; sourceTree = "<group>"; };
+		EBFA6E431AF799C00090C598 /* BASETSD.H */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BASETSD.H; sourceTree = "<group>"; };
+		EBFA6E441AF799C00090C598 /* GLEXT.H */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLEXT.H; sourceTree = "<group>"; };
+		EBFA6E451AF799C00090C598 /* glut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glut.h; sourceTree = "<group>"; };
+		EBFA6E461AF799C00090C598 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		EBFA6E481AF799C00090C598 /* WGLEXT.H */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WGLEXT.H; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +57,11 @@
 		EBB884EE1AB7DB1D00E0B801 = {
 			isa = PBXGroup;
 			children = (
-				EBF1B5181AE4DE0100970FE6 /* ex04.cpp */,
-				EB0B861F1AC3AC670001ED49 /* NeHe.bmp */,
+				EBFA6E431AF799C00090C598 /* BASETSD.H */,
+				EBFA6E441AF799C00090C598 /* GLEXT.H */,
+				EBFA6E451AF799C00090C598 /* glut.h */,
+				EBFA6E461AF799C00090C598 /* main.c */,
+				EBFA6E481AF799C00090C598 /* WGLEXT.H */,
 				EB0B86141AC39A240001ED49 /* libSOIL.a */,
 				EB0B86161AC39A2B0001ED49 /* CoreFoundation.framework */,
 				EBB885051AB7DC5500E0B801 /* OpenGL.framework */,
@@ -136,7 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF1B5191AE4DE0100970FE6 /* ex04.cpp in Sources */,
+				EBFA6E491AF799C00090C598 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
